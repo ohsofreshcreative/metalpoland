@@ -37,8 +37,8 @@ $sectionClass .= ' ' . $background;
 			<div class="swiper-slide">
 				<article class="overflow-visible rounded-[10px] grid md:grid-cols-[50%_1fr] gap-10 min-h-[420px]">
 					<div class="__img  relative min-h-[260px] md:min-h-full">
-						<img src="http://metalpoland.local/wp-content/uploads/2026/06/blue-corner-t.svg" class="absolute top-3 right-3 z-20" alt="">
-						<img src="http://metalpoland.local/wp-content/uploads/2026/06/blue-corner-b.svg" class="absolute bottom-3 left-3 z-20" alt="">
+						<img src="/wp-content/uploads/2026/06/blue-corner-t.svg" class="absolute top-3 right-3 z-20" alt="">
+						<img src="/wp-content/uploads/2026/06/blue-corner-b.svg" class="absolute bottom-3 left-3 z-20" alt="">
 						@if(has_post_thumbnail($material->ID))
 						{!! wp_get_attachment_image(
 						get_post_thumbnail_id($material->ID),
