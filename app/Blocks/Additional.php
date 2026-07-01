@@ -6,62 +6,62 @@ use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 use App\Support\SectionClasses;
 
-class Reviews extends Block
+class Additional extends Block
 {
-	public $name = 'Slider - Opinie';
-	public $description = 'reviews';
-	public $slug = 'reviews';
+	public $name = 'Usługi dodatkowe';
+	public $description = 'additional';
+	public $slug = 'additional';
 	public $category = 'formatting';
-	public $icon = 'format-quote';
-	public $keywords = ['reviews', 'kafelki'];
+	public $icon = 'align-pull-left';
+	public $keywords = ['tresc', 'zdjecie'];
 	public $mode = 'edit';
-	public $supports = [
-		'align' => false,
-		'mode' => true,
-		'jsx' => true,
-	];
+public $supports = [
+    'align' => false,
+    'mode' => true,
+    'jsx' => true,
+    'anchor' => true,
+    'customClassName' => true,
+];
 
 	public function fields()
 	{
-		$reviews = new FieldsBuilder('reviews');
+		$additional = new FieldsBuilder('additional');
 
-		$reviews
-			->setLocation('block', '==', 'acf/reviews') // ważne!
+		$additional
+			->setLocation('block', '==', 'acf/additional') // ważne!
 			->addText('block-title', [
 				'label' => 'Tytuł',
 				'required' => 0,
 			])
 			->addAccordion('accordion1', [
-				'label' => 'Slider - Opinie',
+				'label' => 'Usługi dodatkowe',
 				'open' => false,
 				'multi_expand' => true,
 			])
-			/*--- FIELDS ---*/
-			->addTab('Treści', ['placement' => 'top'])
-			->addGroup('g_reviews', ['label' => ''])
-			->addText('title', ['label' => 'Tytuł'])
-			->addWysiwyg('text', ['label' => 'Opis', 'media_upload' => 0, 'tabs' => 'visual'])
+			/*--- GROUP ---*/
+			->addTab('Elementy', ['placement' => 'top'])
+			->addGroup('g_additional', ['label' => ''])
+			->addImage('image', [
+				'label' => 'Obraz',
+				'return_format' => 'array',
+				'preview_size' => 'thumbnail',
+			])
+			->addText('header', ['label' => 'Nagłówek'])
+			->addWysiwyg('text', [
+				'label' => 'Treść',
+				'tabs' => 'all',
+				'toolbar' => 'full',
+				'media_upload' => true,
+			])
+			->addLink('button1', [
+				'label' => 'Przycisk #1',
+				'return_format' => 'array',
+			])
+			->addLink('button2', [
+				'label' => 'Przycisk #2',
+				'return_format' => 'array',
+			])
 			->endGroup()
-
-			/*--- OPINIE ---*/
-
-			->addTab('Opinie', ['placement' => 'top'])
-			->addRepeater('r_reviews', [
-				'label' => 'Slider - Opinie',
-				'layout' => 'table', // 'row', 'block', albo 'table'
-				'min' => 1,
-				'max' => 15,
-				'button_label' => 'Dodaj kafelek'
-			])
-			->addTextarea('txt', [
-				'label' => 'Opis',
-				'rows' => 4,
-				'new_lines' => 'br',
-			])
-			->addText('name', [
-				'label' => 'Klient',
-			])
-			->endRepeater()
 
 			/*--- USTAWIENIA BLOKU ---*/
 
@@ -72,6 +72,18 @@ class Reviews extends Block
 			->addText('section_class', [
 				'label' => 'Dodatkowe klasy CSS',
 			])
+			->addTrueFalse('nolist', [
+				'label' => 'Brak punktatorów',
+				'ui' => 1,
+				'ui_on_text' => 'Tak',
+				'ui_off_text' => 'Nie',
+			])
+			->addTrueFalse('flip', [
+				'label' => 'Odwrotna kolejność',
+				'ui' => 1,
+				'ui_on_text' => 'Tak',
+				'ui_off_text' => 'Nie',
+			])
 			->addTrueFalse('wide', [
 				'label' => 'Szeroka kolumna',
 				'ui' => 1,
@@ -80,6 +92,12 @@ class Reviews extends Block
 			])
 			->addTrueFalse('nomt', [
 				'label' => 'Usunięcie marginesu górnego',
+				'ui' => 1,
+				'ui_on_text' => 'Tak',
+				'ui_off_text' => 'Nie',
+			])
+			->addTrueFalse('gap', [
+				'label' => 'Większy odstęp',
 				'ui' => 1,
 				'ui_on_text' => 'Tak',
 				'ui_off_text' => 'Nie',
@@ -100,14 +118,13 @@ class Reviews extends Block
 				'allow_null' => 0,
 			]);
 
-		return $reviews;
+		return $additional;
 	}
 
 	public function with(): array
 	{
 		$fields = [
-			'g_reviews' => get_field('g_reviews'),
-			'r_reviews' => get_field('r_reviews'),
+			'g_additional' => get_field('g_additional'),
 
 			'section_id' => get_field('section_id'),
 			'section_class' => get_field('section_class'),
@@ -115,6 +132,8 @@ class Reviews extends Block
 			'flip' => (bool) get_field('flip'),
 			'wide' => (bool) get_field('wide'),
 			'nomt' => (bool) get_field('nomt'),
+			'gap' => (bool) get_field('gap'),
+			'nolist' => (bool) get_field('nolist'),
 
 			'background' => get_field('background') ?: 'none',
 		];
@@ -123,13 +142,10 @@ class Reviews extends Block
 			'flip' => 'order-flip',
 			'wide' => 'wide',
 			'nomt' => '!mt-0',
+			'gap' => 'wider-gap',
+			'nolist' => 'no-list',
 		]);
 
 		return $fields;
-	}
-
-	public function enqueue()
-	{
-		// Pozostaw tę metodę pustą.
 	}
 }

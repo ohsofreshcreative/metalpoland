@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.querySelector('.b-reviews')) import('./blocks/reviews');
   if (document.querySelector('.b-tabs')) import('./blocks/tabs');
   if (document.querySelector('.b-slider')) import('./blocks/slider');
+  if (document.querySelector('.b-carousel')) import('./blocks/carousel');
 });
 
 /*--- NOT USED ---*/

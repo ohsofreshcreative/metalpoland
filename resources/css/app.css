@@ -15,61 +15,40 @@
 --p-hover: 4 6 45; /* #04062D */
 
 /* PRIMARY (niebieski) */
---p-50: 176 214 243;  /* #B0D6F3 */
---p-100: 138 190 230; /* #8ABEE6 */
---p-200: 94 157 207;  /* #5E9DCF */
---p-300: 57 135 195;  /* #3987C3 */
---p-400: 23 107 172;  /* #176BAC */
---p-500: 0 87 155;    /* #00579B */
---p-600: 0 73 129;    /* #004981 */
---p-700: 0 58 103;    /* #003A67 */
---p-800: 0 44 78;     /* #002C4E */
---p-900: 0 29 52;     /* #001D34 */
---p-dark: 0 17 31;    /* #00111F */
+/* PRIMARY (granatowy z załącznika) */
+--p-50: 169 193 225;   /* #A9C1E1 */
+--p-100: 126 159 204;  /* #7E9FCC */
+--p-200: 92 128 177;   /* #5C80B1 */
+--p-300: 62 102 155;   /* #3E669B */
+--p-400: 24 68 128;    /* #184480 */
+--p-500: 0 35 83;      /* #002353 */
+--p-600: 0 29 69;      /* #001D45 */
+--p-700: 0 23 55;      /* #001737 */
+--p-800: 0 18 42;      /* #00122A */
+--p-900: 0 12 28;      /* #000C1C */
+--p-dark: 0 7 17;      /* #000711 */
 
---action: rgb(0, 87, 155);
+/* SECONDARY (jasny niebieski z załącznika) */
+--secondary: 33 133 199; /* #2185C7 */
+--s-hover: 12 105 167;   /* #0C69A7 */
 
-
-/* SECONDARY (turkusowy) */
---secondary: 0 192 197; /* #00C0C5 */
---s-hover: 0 160 164;   /* #00A0A4 */
-
---s-50: 171 244 246;  /* #ABF4F6 */
---s-100: 137 238 241; /* #89EEF1 */
---s-200: 99 224 228;  /* #63E0E4 */
---s-300: 59 222 226;  /* #3BDEE2 */
---s-400: 22 211 216;  /* #16D3D8 */
---s-500: 0 192 197;   /* #00C0C5 */
---s-600: 0 160 164;   /* #00A0A4 */
---s-700: 0 128 131;   /* #008083 */
---s-800: 0 96 99;     /* #006063 */
---s-900: 0 64 66;     /* #004042 */
---s-dark: 0 38 39;    /* #002627 */
-
-
-/* THIRD (różowy/fioletowy) */
---third: 248 129 240; /* #F881F0 */
---t-hover: 207 108 200; /* #CF6CC8 */
-
---t-50: 254 230 252;  /* #FEE6FC */
---t-100: 253 213 250; /* #FDD5FA */
---t-200: 252 192 248; /* #FCC0F8 */
---t-300: 250 171 245; /* #FAABF5 */
---t-400: 249 150 243; /* #F996F3 */
---t-500: 248 129 240; /* #F881F0 */
---t-600: 207 108 200; /* #CF6CC8 */
---t-700: 165 86 160;  /* #A556A0 */
---t-800: 124 65 120;  /* #7C4178 */
---t-900: 83 43 80;    /* #532B50 */
---t-dark: 50 26 48;   /* #321A30 */
+--s-50: 190 226 251;  /* #BEE2FB */
+--s-100: 152 208 245; /* #98D0F5 */
+--s-200: 111 187 237; /* #6FBBED */
+--s-300: 70 163 225;  /* #46A3E1 */
+--s-400: 42 149 220;  /* #2A95DC */
+--s-500: 33 133 199;  /* #2185C7 */
+--s-600: 12 105 167;  /* #0C69A7 */
+--s-700: 0 91 152;    /* #005B98 */
+--s-800: 0 77 127;    /* #004D7F */
+--s-900: 0 55 92;     /* #00375C */
+--s-dark: 3 28 45;    /* #031C2D */
 
   /* neutrals / fixed backgrounds */
   --gray: #2a3f50;
-  --bg: #F4F9FF;
-  --bg-light: #F7EEE5;
-  --bg-lighter: #E9F8F3;
-  --bg-brand: #002704;
-  --bg-dark: #071622;
+  --bg: #EEF8FF;
+  --dark:0 30 72;
+  --darker: 0 23 55;
 }
 
 @theme {
@@ -119,19 +98,8 @@
   --color-third-900: rgb(var(--t-900));
   --color-third-dark: rgb(var(--t-dark));
 
-  --color-gray: var(--gray);
-  --color-action: var(--action);
-
-  --color-page: var(--bg);
-  --color-background-light: var(--bg-light);
-  --color-background-brand: var(--bg-brand);
-  --color-background-dark: var(--bg-dark);
-
-  --color-primary-light: var(--color-primary-300);
-  --color-primary-lighter: var(--color-primary-100);
-
-  --color-secondary-light: var(--color-secondary-300);
-  --color-secondary-lighter: var(--color-secondary-100);
+  --color-dark: rgb(var(--dark));
+  --color-darker: rgb(var(--darker));
 
   --color-muted: var(--color-secondary-500);
   --gradient: linear-gradient(90deg, #132A23 0%, #0D3F2F 100%);
@@ -149,6 +117,8 @@
 
 /*-- USED ---*/
 @import '../css/blocks/hero.scss';
+@import '../css/blocks/additional.scss';
+@import '../css/blocks/carousel.scss';
 /*-- NOT USED ---*/
 @import '../css/blocks/accordion.scss';
 @import '../css/blocks/cards.scss';

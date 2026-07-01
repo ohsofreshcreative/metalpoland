@@ -1,6 +1,6 @@
 {
-  "_pagination-BgIkuN3e.js": {
-    "file": "assets/pagination-BgIkuN3e.js",
+  "_pagination-DEisu31g.js": {
+    "file": "assets/pagination-DEisu31g.js",
     "name": "pagination",
     "css": [
       "assets/pagination-UScTrRJn.css"
@@ -15,7 +15,7 @@
     "src": "editor.deps.json"
   },
   "resources/css/app.css": {
-    "file": "assets/app-DRbPoNfJ.css",
+    "file": "assets/app-Djd6soEE.css",
     "name": "app",
     "names": [
       "app.css"
@@ -23,13 +23,16 @@
     "src": "resources/css/app.css",
     "isEntry": true,
     "assets": [
+      "assets/header-rBwK-Qds.svg",
+      "assets/arrow-OOWHp0XE.svg",
+      "assets/bullet-Bp6Cf7tw.svg",
+      "assets/mask-BXXYRBkm.svg",
       "assets/phone-DrjoctTo.svg",
-      "assets/mail-CPWRSG8E.svg",
-      "assets/pointer-C3ifhTTD.svg"
+      "assets/mail-CPWRSG8E.svg"
     ]
   },
   "resources/css/editor.css": {
-    "file": "assets/editor-C9-z78jL.css",
+    "file": "assets/editor-XAJcg2Ci.css",
     "name": "editor",
     "names": [
       "editor.css"
@@ -37,58 +40,80 @@
     "src": "resources/css/editor.css",
     "isEntry": true
   },
+  "resources/images/arrow.svg": {
+    "file": "assets/arrow-OOWHp0XE.svg",
+    "src": "resources/images/arrow.svg"
+  },
+  "resources/images/bullet.svg": {
+    "file": "assets/bullet-Bp6Cf7tw.svg",
+    "src": "resources/images/bullet.svg"
+  },
+  "resources/images/header.svg": {
+    "file": "assets/header-rBwK-Qds.svg",
+    "src": "resources/images/header.svg"
+  },
   "resources/images/mail.svg": {
     "file": "assets/mail-CPWRSG8E.svg",
     "src": "resources/images/mail.svg"
+  },
+  "resources/images/mask.svg": {
+    "file": "assets/mask-BXXYRBkm.svg",
+    "src": "resources/images/mask.svg"
   },
   "resources/images/phone.svg": {
     "file": "assets/phone-DrjoctTo.svg",
     "src": "resources/images/phone.svg"
   },
-  "resources/images/pointer.svg": {
-    "file": "assets/pointer-C3ifhTTD.svg",
-    "src": "resources/images/pointer.svg"
-  },
   "resources/js/app.js": {
-    "file": "assets/app-Blj1B8yc.js",
+    "file": "assets/app-DG5I002U.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "dynamicImports": [
       "resources/js/blocks/reviews.js",
       "resources/js/blocks/tabs.js",
-      "resources/js/blocks/slider.js"
+      "resources/js/blocks/slider.js",
+      "resources/js/blocks/carousel.js"
+    ]
+  },
+  "resources/js/blocks/carousel.js": {
+    "file": "assets/carousel-C25-5KW8.js",
+    "name": "carousel",
+    "src": "resources/js/blocks/carousel.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_pagination-DEisu31g.js"
     ]
   },
   "resources/js/blocks/reviews.js": {
-    "file": "assets/reviews-BqM4UomV.js",
+    "file": "assets/reviews-CZSexjwj.js",
     "name": "reviews",
     "src": "resources/js/blocks/reviews.js",
     "isDynamicEntry": true,
     "imports": [
-      "_pagination-BgIkuN3e.js"
+      "_pagination-DEisu31g.js"
     ]
   },
   "resources/js/blocks/slider.js": {
-    "file": "assets/slider-Cx-tKvHa.js",
+    "file": "assets/slider-x-zV5XBd.js",
     "name": "slider",
     "src": "resources/js/blocks/slider.js",
     "isDynamicEntry": true,
     "imports": [
-      "_pagination-BgIkuN3e.js"
+      "_pagination-DEisu31g.js"
     ],
     "css": [
       "assets/slider-x1XGuNl0.css"
     ]
   },
   "resources/js/blocks/tabs.js": {
-    "file": "assets/tabs-B5s4zv4X.js",
+    "file": "assets/tabs-DHLaxzBo.js",
     "name": "tabs",
     "src": "resources/js/blocks/tabs.js",
     "isDynamicEntry": true
   },
   "resources/js/editor.js": {
-    "file": "assets/editor-DRWDEw-3.js",
+    "file": "assets/editor-Dqo-zVGR.js",
     "name": "editor",
     "src": "resources/js/editor.js",
     "isEntry": true

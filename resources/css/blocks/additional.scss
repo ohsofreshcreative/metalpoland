@@ -1,4 +1,18 @@
-.b-wysiwyg {
+.b-additional {
+	img.mask-img {
+		-webkit-mask-image: url('/wp-content/uploads/2026/06/blue-square.svg');
+		mask-image: url('/wp-content/uploads/2026/06/blue-square.svg');
+		-webkit-mask-repeat: no-repeat;
+		mask-repeat: no-repeat;
+		-webkit-mask-size: cover;
+		mask-size: cover;
+		-webkit-mask-position:  center;
+		mask-position:  center;
+		object-fit: cover;
+		-webkit-mask-composite: exclude;
+		mask-composite: exclude;
+	}
+
 	.__txt {
 		p {
 			margin-bottom: 16px;
@@ -45,7 +59,7 @@
 
 /*--- BRAK PUNKTATORÓW ---*/
 
-.b-wysiwyg.no-list {
+.b-additional.no-list {
 	.__txt {
 		ul {
 			margin-top: 8px;
@@ -59,7 +73,7 @@
 				margin-bottom: 0.5em;
 
 				&::before {
-					content: none;
+					additional: none;
 					display: none;
 				}
 			}

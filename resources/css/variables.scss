@@ -91,14 +91,14 @@ body {
 /*--- !ROOT ---*/
 
 :root {
-	--header: "din-2014", sans-serif;
-	--txt: "din-2014", sans-serif;
-	--btns-font: "din-2014", sans-serif;
+	--header: "Montserrat", sans-serif;
+	--txt: "Montserrat", sans-serif;
+	--btns-font: "Montserrat", sans-serif;
 
-	--smt: 104px;
-	--spt: 104px;
-	--smb: 104px;
-	--spb: 104px;
+	--smt: 120px;
+	--spt: 120px;
+	--smb: 120px;
+	--spb: 120px;
 	--menu-height: 72px !important;
 
 	--img-xs: 176px;
@@ -118,8 +118,8 @@ body {
 	--radius: 24px;
 
 	--btns-fontsize: 16px;
-	--btns-radius: 104px;
-	--btns-padding: 16px 40px;
+	--btns-radius: 4px;
+	--btns-padding: 24px 40px;
 
 	--footer-py: 156px 0;
 }
@@ -427,7 +427,7 @@ em,
 div,
 .__txt {
 	font-family: var(--txt);
-	font-weight: 300;
+	font-weight: 500;
 }
 
 ul,
@@ -477,13 +477,20 @@ h6,
 	font-weight: 600;
 }
 
-.text-gradient {
-	background-image: linear-gradient(90deg, #025391 0%, #3FB9C1 100%);
-	-webkit-background-clip: text;
-	background-clip: text;
-	-webkit-text-fill-color: transparent;
-	color: transparent;
-	display: inline-block;
+.header {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+
+	&::before {
+		content: url('@images/header.svg');
+		position: relative;
+		left: 0;
+		top: 2px;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
 }
 
 .text-big {
@@ -493,19 +500,19 @@ h6,
 
 h1,
 .text-h1 {
-	font-size: 60px !important;
+	font-size: 56px !important;
 	line-height: 4rem;
 }
 
 h2,
 .text-h2 {
-	font-size: 54px !important;
+	font-size: 48px !important;
 	line-height: 3.7rem;
 }
 
 h3,
 .text-h3 {
-	font-size: 48px !important;
+	font-size: 42px !important;
 	line-height: 3.3rem;
 }
 
@@ -588,7 +595,7 @@ h6,
 .btn {
 	font-family: var(--btns-font);
 	font-size: var(--btns-fontsize);
-	font-weight: 400;
+	font-weight: 600;
 	color: #fff;
 	background: transparent;
 	border: 1px solid transparent;
@@ -601,6 +608,7 @@ h6,
 	white-space: nowrap;
 	cursor: pointer;
 	transition: all 0.2s ease-out;
+	text-transform: uppercase;
 }
 
 .btn-primary {
@@ -649,7 +657,7 @@ h6,
 }
 
 .btn-underline::after {
-	content: url('/wp-content/uploads/2026/01/arrow.svg');
+	content: url('@images/arrow.svg');
 	height: 12px;
 	width: 12px;
 	margin-left: 8px;

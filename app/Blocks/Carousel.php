@@ -5,14 +5,14 @@ namespace App\Blocks;
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class Slider extends Block
+class Carousel extends Block
 {
-    public $name = 'Slider - Standard';
-    public $description = 'slider';
-    public $slug = 'slider';
+    public $name = 'Materiały - Slider';
+    public $description = 'carousel';
+    public $slug = 'carousel';
     public $category = 'formatting';
     public $icon = 'image-flip-horizontal';
-    public $keywords = ['slider', 'kafelki'];
+    public $keywords = ['carousel', 'kafelki'];
     public $mode = 'edit';
     public $supports = [
         'align' => false,
@@ -22,56 +22,49 @@ class Slider extends Block
 
     public function fields()
     {
-        $slider = new FieldsBuilder('slider');
+        $carousel = new FieldsBuilder('carousel');
 
-        $slider
-            ->setLocation('block', '==', 'acf/slider') // ważne!
+        $carousel
+            ->setLocation('block', '==', 'acf/carousel')
             ->addText('block-title', [
                 'label' => 'Tytuł',
                 'required' => 0,
             ])
             ->addAccordion('accordion1', [
-                'label' => 'Slider - Kafelki',
+                'label' => 'Materiały - Slider',
                 'open' => false,
                 'multi_expand' => true,
             ])
+
             /*--- FIELDS ---*/
             ->addTab('Treści', ['placement' => 'top'])
-            ->addGroup('g_slider', ['label' => ''])
+            ->addGroup('g_carousel', ['label' => ''])
 
-            ->addText('title', ['label' => 'Tytuł'])
+            ->addText('title', [
+                'label' => 'Nagłówek nad sliderem',
+            ])
 
-            ->addRepeater('r_slider', [
-                'label' => 'Slider',
-                'layout' => 'table', // 'row', 'block', albo 'table'
-                'min' => 1,
-                'max' => 10,
-                'button_label' => 'Dodaj kafelek'
-            ])
-            ->addImage('image', [
-                'label' => 'Zdjęcie - tło',
-                'return_format' => 'array', // lub 'url', lub 'id'
-                'preview_size' => 'thumbnail',
-            ])
-            ->addImage('icon', [
-                'label' => 'Ikonka',
-                'return_format' => 'array',
-                'preview_size' => 'thumbnail',
-            ])
-            ->addText('header', [
-                'label' => 'Nagłówek',
-            ])
-            ->addTextarea('opis', [
-                'label' => 'Opis',
+            ->addTextarea('text', [
+                'label' => 'Tekst nad sliderem',
                 'rows' => 4,
                 'new_lines' => 'br',
             ])
-            ->endRepeater()
+
+            ->addRelationship('materials', [
+                'label' => 'Materiały do slidera',
+                'post_type' => ['materials'],
+                'post_status' => ['publish'],
+                'filters' => ['search', 'taxonomy'],
+                'elements' => ['featured_image'],
+                'min' => 1,
+                'max' => 10,
+                'return_format' => 'object',
+                'instructions' => 'Wybierz materiały, które mają się pojawić w sliderze. Kolejność na liście będzie zachowana na froncie.',
+            ])
 
             ->endGroup()
 
             /*--- USTAWIENIA BLOKU ---*/
-
             ->addTab('Ustawienia bloku', ['placement' => 'top'])
             ->addText('section_id', [
                 'label' => 'ID',
@@ -121,26 +114,29 @@ class Slider extends Block
                     'section-dark' => 'Ciemne',
                 ],
                 'default_value' => 'none',
-                'ui' => 0, // Ulepszony interfejs
+                'ui' => 0,
                 'allow_null' => 0,
             ]);
 
-        return $slider;
+        return $carousel;
     }
 
     public function with()
     {
+        $g_carousel = get_field('g_carousel') ?: [];
+        $materials = $g_carousel['materials'] ?? [];
+
         return [
-            'g_slider' => get_field('g_slider'),
-            'slider' => get_field('g_slider')['r_slider'] ?? [],
+            'g_carousel' => $g_carousel,
+            'materials' => is_array($materials) ? $materials : [],
             'section_id' => get_field('section_id'),
             'section_class' => get_field('section_class'),
-            'nolist' => get_field('nolist'),
-            'flip' => get_field('flip'),
-            'wide' => get_field('wide'),
-            'nomt' => get_field('nomt'),
-            'gap' => get_field('gap'),
-            'background' => get_field('background'),
+            'nolist' => (bool) get_field('nolist'),
+            'flip' => (bool) get_field('flip'),
+            'wide' => (bool) get_field('wide'),
+            'nomt' => (bool) get_field('nomt'),
+            'gap' => (bool) get_field('gap'),
+            'background' => get_field('background') ?: 'none',
         ];
     }
 }
