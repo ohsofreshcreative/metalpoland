@@ -1,0 +1,17 @@
+.b-highlight {
+	.header {
+		display: flex;
+		gap: 24px;
+		align-items: flex-start !important;
+
+		&::before {
+			content: url('@images/header.svg');
+			position: relative;
+			left: 0;
+			top: 2px;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: top !important;
+		}
+	}
+}

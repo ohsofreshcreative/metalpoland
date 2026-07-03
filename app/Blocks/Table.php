@@ -6,14 +6,14 @@ use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 use App\Support\SectionClasses;
 
-class Cards extends Block
+class Table extends Block
 {
-	public $name = 'Kafelki z obrazem';
-	public $description = 'cards';
-	public $slug = 'cards';
+	public $name = 'Tabela specyfikacji';
+	public $description = 'table - tabela specyfikacji';
+	public $slug = 'table';
 	public $category = 'formatting';
 	public $icon = 'ellipsis';
-	public $keywords = ['cards', 'kafelki'];
+	public $keywords = ['table', 'tabela'];
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
@@ -23,51 +23,54 @@ class Cards extends Block
 
 	public function fields()
 	{
-		$cards = new FieldsBuilder('cards');
+		$table = new FieldsBuilder('table');
 
-		$cards
-			->setLocation('block', '==', 'acf/cards') // ważne!
+		$table
+			->setLocation('block', '==', 'acf/table') // ważne!
 			->addText('block-title', [
 				'label' => 'Tytuł',
 				'required' => 0,
 			])
 			->addAccordion('accordion1', [
-				'label' => 'Kafelki',
+				'label' => 'Tabela specyfikacji',
 				'open' => false,
 				'multi_expand' => true,
 			])
 			/*--- TAB #1 ---*/
 			->addTab('Treści', ['placement' => 'top'])
-			->addGroup('g_cards', ['label' => ''])
+			->addGroup('g_table', ['label' => ''])
 			->addText('header', ['label' => 'Nagłówek'])
 			->addTextarea('text', [
 				'label' => 'Opis',
 				'rows' => 4,
 				'new_lines' => 'br',
 			])
-			->addLink('button', [
-				'label' => 'Przycisk',
-				'return_format' => 'array',
-			])
 			->endGroup()
 
 			/*--- TAB #2 ---*/
-			->addTab('Kafelki', ['placement' => 'top'])
-			->addRepeater('r_cards', [
-				'label' => 'Kafelki',
+			->addTab('Tabela specyfikacji', ['placement' => 'top'])
+			->addRepeater('r_table', [
+				'label' => 'Tabela specyfikacji',
 				'layout' => 'table', // 'row', 'block', albo 'table'
 				'min' => 1,
-				'button_label' => 'Dodaj kafelek'
+				'button_label' => 'Dodaj wiersz'
 			])
-			->addImage('image', [
-				'label' => 'Obraz',
-				'return_format' => 'array', // lub 'url', lub 'id'
-				'preview_size' => 'thumbnail',
+			->addText('pn', [
+				'label' => 'PN',
 			])
-			->addText('title', [
-				'label' => 'Nagłówek',
+			->addText('symbol', [
+				'label' => 'Symbol',
 			])
-			
+			->addText('number', [
+				'label' => 'Numer',
+			])
+			->addText('symbol2', [
+				'label' => 'Symbol',
+			])
+			->addText('number2', [
+				'label' => 'Numer',
+			])
+
 			->endRepeater()
 
 			/*--- USTAWIENIA BLOKU ---*/
@@ -104,29 +107,29 @@ class Cards extends Block
 				'ui_off_text' => 'Nie',
 			])
 			->addSelect('background', [
-                'label' => 'Kolor tła',
-                'choices' => [
-                    'none' => 'Brak (domyślne)',
-                    'section-white' => 'Białe',
-                    'section-light' => 'Jasne',
-                    'section-gray' => 'Szare',
-                    'section-brand' => 'Marki',
-                    'section-gradient' => 'Gradient',
-                    'section-dark' => 'Ciemne',
-                ],
-                'default_value' => 'none',
-                'ui' => 0, // Ulepszony interfejs
-                'allow_null' => 0,
-            ]);
+				'label' => 'Kolor tła',
+				'choices' => [
+					'none' => 'Brak (domyślne)',
+					'section-white' => 'Białe',
+					'section-light' => 'Jasne',
+					'section-gray' => 'Szare',
+					'section-brand' => 'Marki',
+					'section-gradient' => 'Gradient',
+					'section-dark' => 'Ciemne',
+				],
+				'default_value' => 'none',
+				'ui' => 0, // Ulepszony interfejs
+				'allow_null' => 0,
+			]);
 
-		return $cards;
+		return $table;
 	}
 
 	public function with(): array
 	{
 		$fields = [
-			'g_cards' => get_field('g_cards'),
-			'r_cards' => get_field('r_cards'),
+			'g_table' => get_field('g_table'),
+			'r_table' => get_field('r_table'),
 
 			'section_id' => get_field('section_id'),
 			'section_class' => get_field('section_class'),

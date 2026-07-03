@@ -6,14 +6,14 @@ use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 use App\Support\SectionClasses;
 
-class Cards extends Block
+class Services extends Block
 {
-	public $name = 'Kafelki z obrazem';
-	public $description = 'cards';
-	public $slug = 'cards';
+	public $name = 'Nagłówek, tło i linki';
+	public $description = 'services - nagłówek, tło i linki';
+	public $slug = 'services';
 	public $category = 'formatting';
-	public $icon = 'ellipsis';
-	public $keywords = ['cards', 'kafelki'];
+	public $icon = 'align-full-width';
+	public $keywords = ['tresc', 'zdjecie'];
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
@@ -23,52 +23,43 @@ class Cards extends Block
 
 	public function fields()
 	{
-		$cards = new FieldsBuilder('cards');
+		$services = new FieldsBuilder('services');
 
-		$cards
-			->setLocation('block', '==', 'acf/cards') // ważne!
+		$services
+			->setLocation('block', '==', 'acf/services') // ważne!
 			->addText('block-title', [
 				'label' => 'Tytuł',
 				'required' => 0,
 			])
 			->addAccordion('accordion1', [
-				'label' => 'Kafelki',
+				'label' => 'services - Nagłówek, tło i linki',
 				'open' => false,
 				'multi_expand' => true,
 			])
 			/*--- TAB #1 ---*/
-			->addTab('Treści', ['placement' => 'top'])
-			->addGroup('g_cards', ['label' => ''])
-			->addText('header', ['label' => 'Nagłówek'])
-			->addTextarea('text', [
-				'label' => 'Opis',
-				'rows' => 4,
-				'new_lines' => 'br',
-			])
-			->addLink('button', [
-				'label' => 'Przycisk',
-				'return_format' => 'array',
-			])
-			->endGroup()
-
-			/*--- TAB #2 ---*/
-			->addTab('Kafelki', ['placement' => 'top'])
-			->addRepeater('r_cards', [
-				'label' => 'Kafelki',
-				'layout' => 'table', // 'row', 'block', albo 'table'
-				'min' => 1,
-				'button_label' => 'Dodaj kafelek'
-			])
+			->addTab('Treść', ['placement' => 'top'])
+			->addGroup('g_services', ['label' => 'services'])
 			->addImage('image', [
 				'label' => 'Obraz',
-				'return_format' => 'array', // lub 'url', lub 'id'
+				'return_format' => 'array',
 				'preview_size' => 'thumbnail',
 			])
-			->addText('title', [
-				'label' => 'Nagłówek',
+			->addText('title', ['label' => 'Tytuł'])
+			->addWysiwyg('text', [
+				'label' => 'Treść',
+				'tabs' => 'all',
+				'toolbar' => 'full',
+				'media_upload' => true,
 			])
-			
-			->endRepeater()
+			->addRelationship('links', [
+				'label' => 'Linki',
+				'instructions' => 'Wybierz podstrony',
+				'post_type' => ['page', 'materials'], 
+				'filters' => ['search'],
+				'elements' => ['title'],
+				'return_format' => 'object', 
+			])
+			->endGroup()
 
 			/*--- USTAWIENIA BLOKU ---*/
 
@@ -78,6 +69,12 @@ class Cards extends Block
 			])
 			->addText('section_class', [
 				'label' => 'Dodatkowe klasy CSS',
+			])
+			->addTrueFalse('nolist', [
+				'label' => 'Brak punktatorów',
+				'ui' => 1,
+				'ui_on_text' => 'Tak',
+				'ui_off_text' => 'Nie',
 			])
 			->addTrueFalse('flip', [
 				'label' => 'Odwrotna kolejność',
@@ -104,29 +101,28 @@ class Cards extends Block
 				'ui_off_text' => 'Nie',
 			])
 			->addSelect('background', [
-                'label' => 'Kolor tła',
-                'choices' => [
-                    'none' => 'Brak (domyślne)',
-                    'section-white' => 'Białe',
-                    'section-light' => 'Jasne',
-                    'section-gray' => 'Szare',
-                    'section-brand' => 'Marki',
-                    'section-gradient' => 'Gradient',
-                    'section-dark' => 'Ciemne',
-                ],
-                'default_value' => 'none',
-                'ui' => 0, // Ulepszony interfejs
-                'allow_null' => 0,
-            ]);
+				'label' => 'Kolor tła',
+				'choices' => [
+					'none' => 'Brak (domyślne)',
+					'section-white' => 'Białe',
+					'section-light' => 'Jasne',
+					'section-gray' => 'Szare',
+					'section-brand' => 'Marki',
+					'section-gradient' => 'Gradient',
+					'section-dark' => 'Ciemne',
+				],
+				'default_value' => 'none',
+				'ui' => 0, // Ulepszony interfejs
+				'allow_null' => 0,
+			]);
 
-		return $cards;
+		return $services;
 	}
 
 	public function with(): array
 	{
 		$fields = [
-			'g_cards' => get_field('g_cards'),
-			'r_cards' => get_field('r_cards'),
+			'g_services' => get_field('g_services'),
 
 			'section_id' => get_field('section_id'),
 			'section_class' => get_field('section_class'),

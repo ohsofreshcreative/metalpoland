@@ -6,8 +6,8 @@
 		mask-repeat: no-repeat;
 		-webkit-mask-size: cover;
 		mask-size: cover;
-		-webkit-mask-position:  center;
-		mask-position:  center;
+		-webkit-mask-position: center;
+		mask-position: center;
 		object-fit: cover;
 		-webkit-mask-composite: exclude;
 		mask-composite: exclude;
@@ -40,7 +40,8 @@
 				align-items: center;
 
 				&::before {
-					content: url('@images/bullet.svg');
+					content: "";
+					background-image: url('@images/bullet.svg');
 					position: relative;
 					left: 0;
 					top: -6px;

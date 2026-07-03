@@ -24,7 +24,43 @@ class ThemeSettings extends Field
                 'return_format' => 'array', // lub 'url' / 'id'
                 'preview_size' => 'medium',
                 'library' => 'all',
-            ]);
+            ])
+            ->addGroup('g_contact_info', [
+                'label' => 'Dane kontaktowe i logo',
+                'layout' => 'block',
+            ])
+              ->addText('logoText', [
+                    'label' => 'Logo Text',
+                ])
+                ->addText('ts_address', [
+                    'label' => 'Adres',
+                ])
+                ->addText('phone', [
+                    'label' => 'Telefon',
+                ])
+                ->addText('mail', [
+                    'label' => 'Adres e-mail',
+                ])
+            ->endGroup()
+            ->addRepeater('social_media', [
+                'label' => 'Media społecznościowe',
+                'layout' => 'table',
+                'button_label' => 'Dodaj link',
+            ])
+                ->addText('link', [
+                    'label' => 'URL linku',
+                ])
+                ->addSelect('icon', [
+                    'label' => 'Ikona',
+                    'choices' => [
+                        'facebook' => 'Facebook',
+                        'instagram' => 'Instagram',
+						'linkedin' => 'LinkedIn',
+                        
+                    ],
+                   
+                ])
+            ->endRepeater();
 
         return [$theme];
     }

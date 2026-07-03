@@ -53,3 +53,30 @@ add_action('init', function () {
 		'rewrite'      => ['slug' => 'kategoria-materialu', 'with_front' => false],
 	]);
 });
+
+
+/*--- REJESTRACJA POLA DLA IKONY I KOLORU W PRAWYM PANELU BOCZNYM ---*/
+add_action('acf/init', function() {
+    $materials_side_fields = new \StoutLogic\AcfBuilder\FieldsBuilder('materials_panel_boczny', [
+        'title' => 'Ustawienia kafelka materiału',
+        'position' => 'side', 
+        'style' => 'default',
+        'label_placement' => 'top',
+    ]);
+    
+    $materials_side_fields
+        ->setLocation('post_type', '==', 'materials')
+        ->addImage('material_icon', [
+            'label' => 'Ikona',
+            'instruction' => 'Wybierz ikonę materiału',
+            'return_format' => 'id', 
+            'preview_size' => 'thumbnail',
+        ])
+        ->addColorPicker('material_color', [
+            'label' => 'Kolor motywu / ikony',
+            'instruction' => 'Wybierz kolor przewodni dla tego materiału',
+            'default_value' => '#c86a24', // Domyślny brązowy/pomarańczowy kolor
+        ]);
+
+    acf_add_local_field_group($materials_side_fields->build());
+});

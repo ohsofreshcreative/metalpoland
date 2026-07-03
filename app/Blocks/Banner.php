@@ -49,20 +49,8 @@ class Banner extends Block
 				'rows' => 2,
 				'new_lines' => 'br',
 			])
-			->addWysiwyg('text', [
-				'label' => 'Treść',
-				'tabs' => 'all',
-				'toolbar' => 'full',
-				'media_upload' => true,
-			])
-			->addLink('button1', [
-				'label' => 'Przycisk #1',
-				'return_format' => 'array',
-			])
-			->addLink('button2', [
-				'label' => 'Przycisk #2',
-				'return_format' => 'array',
-			])
+			
+
 			->endGroup()
 
 			/*--- USTAWIENIA BLOKU ---*/

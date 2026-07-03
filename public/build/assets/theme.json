@@ -1451,7 +1451,7 @@
         {
           "name": "Black",
           "slug": "black",
-          "color": "#000"
+          "color": "rgb(var(--black))"
         },
         {
           "name": "White",
@@ -1509,6 +1509,11 @@
           "color": "rgb(var(--s-hover))"
         },
         {
+          "name": "Secondary (100)",
+          "slug": "secondary-100",
+          "color": "rgb(var(--s-100))"
+        },
+        {
           "name": "Secondary (500)",
           "slug": "secondary-500",
           "color": "rgb(var(--s-500))"
@@ -1519,6 +1524,11 @@
           "color": "rgb(var(--s-600))"
         },
         {
+          "name": "Secondary (Dark)",
+          "slug": "secondary-dark",
+          "color": "rgb(var(--s-dark))"
+        },
+        {
           "name": "Dark",
           "slug": "dark",
           "color": "rgb(var(--dark))"
@@ -1527,6 +1537,21 @@
           "name": "Darker",
           "slug": "darker",
           "color": "rgb(var(--darker))"
+        },
+        {
+          "name": "Darken",
+          "slug": "darken",
+          "color": "rgba(var(--darken))"
+        },
+        {
+          "name": "Bg",
+          "slug": "bg",
+          "color": "var(--bg)"
+        },
+        {
+          "name": "Lighter",
+          "slug": "lighter",
+          "color": "var(--lighter)"
         }
       ]
     },

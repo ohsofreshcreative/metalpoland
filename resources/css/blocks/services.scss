@@ -1,0 +1,25 @@
+.b-services{
+	._txt{
+		p{
+			color: #fff !important;
+		}
+	}
+	._s-links{
+				position: relative;
+				display: flex;
+				gap: 12px;
+				align-items: center;
+		&::before {
+					content: "";
+					background-image: url('@images/bullet.svg');
+					position: relative;
+					left: 0;
+					top: 0px;
+					width: 16px;
+					height: 16px;
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-position: center;
+				}
+	}
+}

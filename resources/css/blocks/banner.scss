@@ -1,3 +1,11 @@
 .b-banner {
-
+	.blur {
+		width: 1034px;
+		height: 1034px;
+		border-radius: 1034px;
+		left: 45px;
+		bottom: -950px;
+		opacity: 0.5;
+		filter: blur(175px);
+	}
 }

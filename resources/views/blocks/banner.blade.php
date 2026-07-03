@@ -8,44 +8,28 @@ $sectionClass .= $nomt ? ' !mt-0' : '';
 <section
 	data-gsap-anim="section"
 	@if(!empty($section_id)) id="{{ $section_id }}" @endif
-	class="b-banner relative {{ $sectionClass }} {{ $section_class }}">
-
-	<div class=" __wrapper relative" style="background-image:linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('{{ $g_banner['image']['url'] }}'); background-size:cover; background-position:center;">
+	class="b-banner relative bg-darken {{ $sectionClass }} {{ $section_class }}">
+	<!-- <div class="blur bg-primary absolute "></div> -->
+	<div class=" __wrapper relative ">
 		<div class="__inside c-main relative">
-			<div class="__content py-20">
-
+			<div class="__content py-34">
 				<div>
-					<h1 data-gsap-element="header" class=" text-white">
+					<h1 data-gsap-element="header" class=" !text-white">
 						{!! $g_banner['header'] !!}
 					</h1>
-					<div data-gsap-element="txt" class="text-lg text-white mt-2 w-full md:w-1/2">
-						{!! $g_banner['text'] !!}
-					</div>
-					@if (!empty($g_banner['button1']))
-					<div class="inline-buttons m-btn">
-						@if (!empty($g_banner['button1']))
-						<x-button
-							:href="$g_banner['button1']['url']"
-							variant="primary"
-							class=""
-							data-gsap-element="btn">
-							{{ $g_banner['button1']['title'] }}
-						</x-button>
-						@endif
-
-						@if (!empty($g_banner['button2']))
-						<x-button
-							:href="$g_banner['button2']['url']"
-							variant="secondary"
-							class=""
-							data-gsap-element="btn">
-							{{ $g_banner['button2']['title'] }}
-						</x-button>
-						@endif
-					</div>
-					@endif
 				</div>
+				
 			</div>
 		</div>
+		<div class="__img">
+					<img
+						src="{{ $g_banner['image']['url'] }}"
+						alt="{{ $g_banner['image']['alt'] }}"
+						class="mask-img top-1/2 -translate-y-1/2 absolute right-0 z-20 h-full w-5/12 overflow-hidden object-cover" />
+
+					<!-- <img class="absolute -translate-y-1/2 -right-1/12 xl:right-1 xl:-translate-y-1/2" src="/wp-content/uploads/2026/06/hero-blue.svg" /> -->
+				</div>
+		<img class="absolute left-0 bottom-0 w-42 h-42" src="{{ Vite::asset('resources/images/triangle.svg') }}" />
 
 </section>
+
