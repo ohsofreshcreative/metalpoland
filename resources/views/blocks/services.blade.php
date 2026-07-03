@@ -1,57 +1,70 @@
 @php
-  $links = $g_services['links'] ?? [];
+$links = $g_services['links'] ?? [];
+$isText = !empty($g_services['links_as_text']) || !empty($links_as_text);
 @endphp
-<!-- services  -->
+
 <section
-    data-gsap-anim="section"
-    @if(!empty($section_id)) id="{{ $section_id }}" @endif
-    class="b-services relative pt-[100px] pb-[120px] md:pt-[300px] lg:pt-[540px] md:pb-[144px] bg-cover bg-no-repeat bg-center py-24 {{ $sectionClass }} {{ $section_class }}"
-    @if(!empty($g_services['image']['url']))
-    style="background-image: url('{{ $g_services['image']['url'] }}');"
-    @endif>
-    
-    <div class="absolute inset-0 bg-gradient-darker z-0"></div>
-    
-    <img class="absolute bottom-0 left-0 w-26 h-26  lg:w-42 lg:h-42 z-10 pointer-events-none" src="/wp-content/uploads/2026/06/bottom-left-shape.svg" />
-    
-    <div class="_wrapper c-main relative z-20">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-end relative z-20">
-            
-            <div class=" _content !text-white ">
-                <h2 data-gsap-element="header" class="header !text-white text-h3  mb-6">
-                    {{ $g_services['title'] }}
-                </h2>
-                @if(!empty($g_services['text']))
-                    <div data-gsap-element="text" class="_txt !text-white">
-                        {!! $g_services['text'] !!}
-                    </div>
-                @endif
-            </div>
- 
-            <div class="">
-                @if (!empty($links))
-                    <ul class="flex flex-col  max-w-[400px] lg:ml-auto">
-                        @foreach ($links as $post_link)
-                            <li class="border-b border-white/50">
-                                <a href="{{ get_permalink($post_link->ID) }}" class="flex items-center justify-between py-2 group text-white text-lg font-medium transition-colors hover:text-primary-300">
-                                    
-                                    <div class="flex items-center gap-3">
-                                        <span class="_s-links !text-white text-h7">{{ get_the_title($post_link->ID) }}</span>
-                                    </div>
+	data-gsap-anim="section"
+	@if(!empty($section_id)) id="{{ $section_id }}" @endif
+	class="b-services relative pt-[100px] pb-[120px] md:pt-[300px] lg:pt-[540px] md:pb-[144px] bg-cover bg-no-repeat bg-center py-24 -smt {{ $sectionClass }} {{ $section_class }}"
+	@if(!empty($g_services['image']['url']))
+	style="background-image: url('{{ $g_services['image']['url'] }}');"
+	@endif>
+	<div class="absolute inset-0 bg-gradient-darker z-0"></div>
+	<img class="absolute bottom-0 left-0 w-26 h-26 lg:w-42 lg:h-42 z-10 pointer-events-none"
+		src="/wp-content/uploads/2026/06/bottom-left-shape.svg" />
+	<div class="_wrapper c-main relative z-20">
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-end">
+			<div class="_content !text-white">
+				<h2 class="header !text-white text-h3 mb-6">
+					{{ $g_services['title'] }}
+				</h2>
+				@if(!empty($g_services['text']))
+				<div class="_txt !text-white">
+					{!! $g_services['text'] !!}
+				</div>
+				@endif
+			</div>
+			<div>
+				@if(!empty($links))
+				<ul class="flex flex-col max-w-[400px] lg:ml-auto">
+					@foreach ($links as $item)
+					@php
+					$post = $item['page'] ?? null;
+					$label = $item['label'] ?? '';
 
-                                    <span class="transform transition-transform duration-300 group-hover:-translate-x-1.5">
-                                       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
-  <path d="M11.7912 4.55044L6.7981 0.175445C6.66357 0.0615964 6.48339 -0.00140039 6.29637 2.36265e-05C6.10935 0.00144764 5.93044 0.0671784 5.79819 0.183058C5.66594 0.298938 5.59093 0.455696 5.5893 0.619569C5.58768 0.783442 5.65957 0.941318 5.7895 1.05919L9.56497 4.36732H0.713294C0.524116 4.36732 0.342687 4.43317 0.208919 4.55038C0.0751503 4.66759 0 4.82656 0 4.99232C0 5.15808 0.0751503 5.31705 0.208919 5.43426C0.342687 5.55147 0.524116 5.61732 0.713294 5.61732H9.56497L5.7895 8.92544C5.72138 8.9831 5.66704 9.05206 5.62965 9.12832C5.59227 9.20457 5.57259 9.28658 5.57177 9.36957C5.57095 9.45255 5.589 9.53485 5.62486 9.61166C5.66073 9.68847 5.71369 9.75826 5.78066 9.81694C5.84764 9.87562 5.92728 9.92203 6.01494 9.95346C6.1026 9.98488 6.19653 10.0007 6.29124 9.99998C6.38595 9.99926 6.47955 9.98201 6.56657 9.94926C6.65359 9.9165 6.7323 9.86889 6.7981 9.80919L11.7912 5.43419C11.9249 5.31699 12 5.15805 12 4.99232C12 4.82659 11.9249 4.66765 11.7912 4.55044Z" fill="white"/>
-</svg>
-                                    </span>
+					if (!$post && empty($label)) {
+					continue;
+					}
 
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
-                @endif
-            </div>
+					if (empty($label) && $post) {
+					$label = get_the_title($post->ID);
+					}
 
-        </div>
-    </div>
+					$url = $post ? get_permalink($post->ID) : '#';
+					@endphp
+
+					<li class="border-b border-white/50">
+						<div class="flex items-center justify-between py-2 group text-white">
+							@if($isText)
+							<span class="_s-links text-h7 !text-white">
+								{{ $label }}
+							</span>
+							@else
+							<a href="{{ $url }}"
+								class="flex items-center gap-3 text-white group-hover:text-primary-300">
+								<span class="_s-links text-h7 !text-white">
+									{{ $label }}
+								</span>
+							</a>
+							@endif
+							<x-icon.arrow-right class="w-3 h-4 transition-transform group-hover:translate-x-1" />
+						</div>
+					</li>
+					@endforeach
+				</ul>
+				@endif
+			</div>
+		</div>
+	</div>
 </section>

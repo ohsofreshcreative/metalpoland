@@ -34,7 +34,7 @@ class Cta extends Block
                 'required' => 0,
             ])
             ->addAccordion('accordion1', [
-                'label' => 'Informacje i ustawienia',
+                'label' => 'Wezwanie do działania',
                 'open' => false,
                 'multi_expand' => true,
             ])

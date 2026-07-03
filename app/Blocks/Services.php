@@ -32,7 +32,7 @@ class Services extends Block
 				'required' => 0,
 			])
 			->addAccordion('accordion1', [
-				'label' => 'services - Nagłówek, tło i linki',
+				'label' => 'Formy materiałów',
 				'open' => false,
 				'multi_expand' => true,
 			])
@@ -51,13 +51,24 @@ class Services extends Block
 				'toolbar' => 'full',
 				'media_upload' => true,
 			])
-			->addRelationship('links', [
+			->addRepeater('links', [
 				'label' => 'Linki',
-				'instructions' => 'Wybierz podstrony',
-				'post_type' => ['page', 'materials'], 
-				'filters' => ['search'],
-				'elements' => ['title'],
-				'return_format' => 'object', 
+				'layout' => 'table',
+			])
+			->addPostObject('page', [
+				'label' => 'Strona',
+				'post_type' => ['page', 'materials'],
+				'return_format' => 'object',
+			])
+			->addText('label', [
+				'label' => 'Tekst',
+			])
+			->endRepeater()
+			->addTrueFalse('links_as_text', [
+				'label' => 'Linki jako tekst (bez linków)',
+				'ui' => 1,
+				'ui_on_text' => 'Tekst',
+				'ui_off_text' => 'Linki',
 			])
 			->endGroup()
 
@@ -123,7 +134,7 @@ class Services extends Block
 	{
 		$fields = [
 			'g_services' => get_field('g_services'),
-
+			'links_as_text' => get_field('links_as_text'),
 			'section_id' => get_field('section_id'),
 			'section_class' => get_field('section_class'),
 

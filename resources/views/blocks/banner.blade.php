@@ -29,7 +29,7 @@ $sectionClass .= $nomt ? ' !mt-0' : '';
 
 					<!-- <img class="absolute -translate-y-1/2 -right-1/12 xl:right-1 xl:-translate-y-1/2" src="/wp-content/uploads/2026/06/hero-blue.svg" /> -->
 				</div>
-		<img class="absolute left-0 bottom-0 w-42 h-42" src="{{ Vite::asset('resources/images/triangle.svg') }}" />
+		<img class="absolute left-0 bottom-0 w-42 h-42" src="{{ get_template_directory_uri() }}/resources/images/triangle.svg"" />
 
 </section>
 
