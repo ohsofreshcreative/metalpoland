@@ -42,4 +42,14 @@
 		top: 4px;
 		max-width: 40px;
 	}
+
+	.header {
+		&::before {
+			margin-top: 0.60em;
+
+			@media (max-width: 768px) {
+				margin-top: 0.25em;
+			}
+		}
+	}
 }

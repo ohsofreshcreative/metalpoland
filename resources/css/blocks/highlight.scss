@@ -3,7 +3,10 @@
 		display: flex;
 		gap: 24px;
 		align-items: flex-start !important;
-
+		@media (max-width: 767px) {
+			font-size: 30px!important;
+			gap: 16px;
+		}
 		&::before {
 			content: url('@images/header.svg');
 			position: relative;

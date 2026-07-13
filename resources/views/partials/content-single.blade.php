@@ -3,42 +3,104 @@ $categories = get_the_category();
 $category = !empty($categories) ? $categories[0] : null;
 @endphp
 
-<section data-gsap-anim="section" class="hero-blog bg-gradient relative overflow-visible">
-	<div class="__wrapper c-main relative z-10 -spt">
-		<div class="__content w-full sm:w-3/4 mx-auto pb-30">
+<section data-gsap-anim="section" class="hero-blog bg-darken relative overflow-hidden">
+	<div class="absolute left-[45px] bottom-[-938px] w-[1034px] h-[1034px] rounded-full opacity-50 bg-brand blur-[175px]"></div>
+	<div class="__wrapper c-main relative z-10 ">
+		<div class="__content w-full sm:w-3/4 pt-10  pb-30">
 			<div data-gsap-element="bread" class="__breadcrumb">
-				@if (function_exists('woocommerce_breadcrumb'))
-				{!! woocommerce_breadcrumb() !!}
+				<!-- @if (function_exists('woocommerce_breadcrumb'))
+                {!! woocommerce_breadcrumb() !!}
+                @endif -->
+				@if (function_exists('yoast_breadcrumb'))
+				{!! yoast_breadcrumb('<div id="breadcrumbs">','</div>', false) !!}
 				@endif
 			</div>
 
-			<div class="__top mt-20 text-center">
+			<div class="__top mt-20 text-left">
 				@if ($category)
-				<a data-gsap-element="header" href="{{ get_category_link($category->term_id) }}" class="bg-primary-lighter hover:bg-primary-light border border-primary-light rounded-full text-sm px-4 py-3">{{ $category->name }}</a>
-				@endif
-				<h1 data-gsap-element="header" class="text-h2 text-white mt-6">{{ get_the_title() }}</h1>
-				@if(has_excerpt())
-				<div data-gsap-element="content" class="text-white mt-4">
-					{!! get_the_excerpt() !!}
-				</div>
+				<h1 data-gsap-element="header" class="text-h2 !text-white mt-6">{{ get_the_title() }}</h1>
 				@endif
 			</div>
 		</div>
 	</div>
-	<img src="/wp-content/uploads/2026/01/blog-leaf.svg" alt="" class="absolute -top-20 -right-20 pointer-events-none">
+	<div class="__img hidden xl:block absolute inset-y-0 right-0 w-[50%] z-10">
+		<div class="relative h-full w-full flex justify-end">
+			<img
+				class="absolute top-1/2 -right-50 2xl:-right-40 z-9 w-auto -translate-y-1/2 h-[160%] scale-110 max-w-none"
+				src="/wp-content/uploads/2026/07/line.svg"
+				alt="" />
+			<!-- blue shape  -->
+			<div class="absolute inset-y-0 2xl:right-0 -right-10 w-full z-10 flex justify-end">
+				<svg
+					class="h-full w-auto"
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 901 872"
+					fill="none">
+					<path
+						d="M435.716 0L871.431 435.716L435.716 871.431L0 435.716L435.716 0Z"
+						fill="var(--material-color, #2185C7)" />
+					<path d="M440.139 0H901V871.476H440.139V0Z" fill="var(--material-color, #2185C7)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<img class="absolute bottom-0 left-0 hidden xl:block xl:w-22 xl:h-22 2xl:w-44 2xl:h-44" src="/wp-content/uploads/2026/06/bottom-left-shape.svg" />
+	<img class="absolute top-0 left-0  " src="/wp-content/uploads/2026/07/top-left.svg" />
+	<img class="absolute top-0 right-0 z-40 rotate-90" src="/wp-content/uploads/2026/07/top-left.svg" alt="" />
 </section>
 
+
 <section data-gsap-anim="section">
-	<div id="tresc" class="__entry relative z-10 -mt-16">
-		<div class="c-main">
+	<div id="tresc-top" class="__entry relative z-10 -mt-16">
+		<div class="c-main grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-10 items-end">
 
 			@if(has_post_thumbnail())
-			<div data-gsap-element="image" class="w-full img-2xl rounded-xl overflow-hidden mb-16">
-				{!! get_the_post_thumbnail(get_the_ID(), 'large', ['class' => 'w-full object-cover']) !!}
+			<div data-gsap-element="image" class="w-full img-2xl overflow-hidden relative">
+				{!! get_the_post_thumbnail(get_the_ID(), 'large', ['class' => 'w-full h-full object-cover']) !!}
+				<img class="absolute bottom-0 left-0 w-20 !h-20 " src="/wp-content/uploads/2026/06/bottom-left-shape.svg" />
 			</div>
+			@else
+			<div></div>
 			@endif
-		</div>
 
+			@php
+			$author_id = get_the_author_meta('ID');
+			$acf_avatar_id = get_field('avatar_acf', 'user_' . $author_id);
+			@endphp
+			<div class="flex flex-col items-start gap-4 max-md:items-center">
+				<div class="relative w-24 h-24 rotate-45 overflow-hidden border-[6px] border-secondary-100 flex items-center justify-center mb-2">
+
+					<div class="-rotate-45 w-[142%] h-[142%] shrink-0 absolute">
+						@if(!empty($acf_avatar_id))
+						{!! wp_get_attachment_image(
+						$acf_avatar_id,
+						'thumbnail',
+						false,
+						[
+						'class' => 'w-full h-full object-cover'
+						]
+						) !!}
+						@endif
+					</div>
+
+				</div>
+
+				<div class="max-md:text-center">
+					<span class="text-h6 block">
+						{{ get_the_author() }}
+					</span>
+
+					<span class="text-sm text-[#292929] flex items-center gap-2 mt-2 max-md:justify-center">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 20 22" fill="none">
+							<path d="M0.969 8.279H18.793M14.316 12.185H14.326M9.879 12.185H9.889M5.434 12.185H5.443M14.316 16.071H14.326M9.879 16.071H9.889M5.434 16.071H5.443M13.918 0.875V4.165M5.84 0.875V4.165M14.113 2.455H5.646C2.709 2.455 0.875 4.089 0.875 7.096V16.146C0.875 19.201 2.709 20.875 5.646 20.875H14.104C17.05 20.875 18.875 19.23 18.875 16.222V7.097C18.885 4.09 17.059 2.455 14.113 2.455Z" stroke="#3E87CB" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+						</svg>
+						{{ get_the_date('d.m.Y') }}
+					</span>
+				</div>
+
+			</div>
+
+		</div>
 	</div>
 </section>
 
@@ -71,17 +133,19 @@ preg_match_all('/<h([1-4])[^>]*>(.*?)<\/h[1-4]>/', $content, $matches, PREG_SET_
 					$toc .='</ul></nav>' ;
 					@endphp
 
-					<div class="__content c-main __entry -smt grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10">
+					<div class="__content c-main __entry -smt grid grid-cols-1 md:grid-cols-[3fr_1fr] gap-10">
 
-					<div class="relative md:sticky top-0 md:top-30 h-max">
-						<p class="text-h5 m-title">Spis treści</p>
-						@if(count($matches))
-						{!! $toc !!}
-						@endif
-					</div>
+
 
 					<div id="tresc" class="__entry">
 						{!! $content !!}
+					</div>
+
+					<div class="relative md:sticky top-0 md:top-30 h-max">
+						<p class="text-h5 !text-brand m-title">Spis treści</p>
+						@if(count($matches))
+						{!! $toc !!}
+						@endif
 					</div>
 
 					</div>
@@ -98,47 +162,48 @@ preg_match_all('/<h([1-4])[^>]*>(.*?)<\/h[1-4]>/', $content, $matches, PREG_SET_
 					$related_query = new WP_Query($related_args);
 					@endphp
 
-				 @if($related_query->have_posts())
-                    <section class="related-posts c-main border-t border-primary-light -smt pt-20 pb-26">
-                        <h3 class="text-2xl font-bold mb-6">Podobne wpisy</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            @while($related_query->have_posts())
-                            @php($related_query->the_post())
-                            <article @php(post_class('bg-white radius p-6 flex flex-col'))>
-                                <header>
-                                    @if(has_post_thumbnail())
-                                    <a href="{{ get_permalink() }}">
-                                        {!! get_the_post_thumbnail(null, 'large', ['class' => 'featured-image radius object-cover img-xs']) !!}
-                                    </a>
-                                    @endif
+					@if($related_query->have_posts())
+					<section class="related-posts -smt pt-20 pb-26 bg-white">
+						<div class="c-main">
 
-                                    @php($post_categories = get_the_category(get_the_ID()))
-                                    @if(!empty($post_categories))
-                                    <div class="flex flex-wrap gap-2 mt-4">
-                                        @foreach($post_categories as $post_category)
-                                        <a href="{{ get_category_link($post_category->term_id) }}" class="bg-primary-lighter hover:bg-primary-light border border-primary-light radius text-xs p-2">{{ $post_category->name }}</a>
-                                        @endforeach
-                                    </div>
-                                    @endif
+							<div class="flex items-center justify-between mb-6 max-md:flex-col max-md:items-start max-md:gap-5">
+								<h3 class="text-h2 header">
+									Podobne wpisy
+								</h3>
 
-                                    <h2 class="entry-title text-h6 mt-4">
-                                        <a href="{{ get_permalink() }}">
-                                            {{ get_the_title() }}
-                                        </a>
-                                    </h2>
+								<a href="{{ get_category_link(get_category_by_slug('aktualnosci')->term_id) }}" class="m-btn inline-flex items-center justify-center px-10 py-4 border border-brand text-brand hover:bg-brand hover:text-white transition-all duration-300 shrink-0 max-md:w-full">
+									Zobacz wszystkie wpisy
+								</a>
+							</div>
 
-                                </header>
+							<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+								@while($related_query->have_posts())
+								@php($related_query->the_post())
 
-                                <a class="underline-btn mt-auto pt-4" href="{{ get_permalink() }}">
-                                    Przeczytaj
-                                </a>
+								<article @php(post_class('flex flex-col'))>
+									<header>
+										@if(has_post_thumbnail())
+										<a href="{{ get_permalink() }}">
+											{!! get_the_post_thumbnail(null, 'large', ['class' => 'featured-image object-cover img-m']) !!}
+										</a>
+										@endif
 
-                            </article>
-                            @endwhile
-                            @php(wp_reset_postdata())
-                        </div>
-                    </section>
-                    @endif
+										<h2 class="entry-title text-h6 mt-4">
+											<a href="{{ get_permalink() }}">
+												{{ get_the_title() }}
+											</a>
+										</h2>
+									</header>
+								</article>
+
+								@endwhile
+
+								@php(wp_reset_postdata())
+							</div>
+
+						</div>
+					</section>
+					@endif
 
 
 					<script>

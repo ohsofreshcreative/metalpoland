@@ -49,6 +49,12 @@ class Banner extends Block
 				'rows' => 2,
 				'new_lines' => 'br',
 			])
+			->addWysiwyg('text', [
+				'label' => 'Treść',
+				'tabs' => 'all',
+				'toolbar' => 'full',
+				'media_upload' => true,
+			])
 			
 
 			->endGroup()

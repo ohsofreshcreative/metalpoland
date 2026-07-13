@@ -1,0 +1,19 @@
+.b-benefits {
+  .__txt {
+    p  {
+      margin-top: 16px;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+  	.header {
+        &::before {
+            margin-top: 0.60em;
+			@media (max-width: 768px) {
+				margin-top: 0.25em;
+			}
+        }
+    }
+}

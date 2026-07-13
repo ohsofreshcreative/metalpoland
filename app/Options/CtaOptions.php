@@ -45,10 +45,7 @@ class CtaOptions extends Options
                     'label' => 'Przycisk',
                     'return_format' => 'array',
                 ])
-				   ->addLink('button2', [
-                    'label' => 'Przycisk #2',
-                    'return_format' => 'array',
-                ])
+				
 			
             ->endGroup();
 

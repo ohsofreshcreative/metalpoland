@@ -44,6 +44,7 @@ class Contact extends Block
 			->addTab('Dane', ['placement' => 'top'])
 			->addGroup('g_contact_1', ['label' => ''])
 			->addText('header', ['label' => 'Tytuł'])
+			->addText('text', ['label' => 'Nazwa firmy'])
 			->addText('phone', [
 				'label' => 'Numer telefonu',
 			])

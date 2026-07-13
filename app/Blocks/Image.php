@@ -46,11 +46,7 @@ class Image extends Block
 				'return_format' => 'array', // lub 'url', lub 'id'
 				'preview_size' => 'thumbnail',
 			])
-			->addImage('image2', [
-				'label' => 'Obraz #2',
-				'return_format' => 'array', // lub 'url', lub 'id'
-				'preview_size' => 'thumbnail',
-			])
+
 			->endGroup()
 
 			/*--- USTAWIENIA BLOKU ---*/

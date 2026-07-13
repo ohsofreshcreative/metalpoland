@@ -46,6 +46,7 @@ add_action('init', function () {
 			'add_new_item'      => 'Dodaj nową kategorię',
 			'new_item_name'     => 'Nazwa nowej kategorii',
 			'menu_name'         => 'Kategorie',
+			'show_in_nav_menus' => true,
 		],
 		'hierarchical' => true,
 		'public'       => true,

@@ -1,0 +1,25 @@
+.b-map {
+
+	.__txt {
+		position: relative;
+		overflow: hidden;
+	}
+
+	.map-overlay {
+		position: absolute;
+		inset: 0;
+		z-index: 2;
+		pointer-events: none;
+		border-radius: 1rem;
+
+		background: rgba(33, 133, 199, 0.60);
+		mix-blend-mode: color;
+	}
+
+	.__txt iframe {
+		display: block;
+		position: relative;
+		z-index: 1;
+		filter: grayscale(1);
+	}
+}

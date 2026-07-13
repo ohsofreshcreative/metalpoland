@@ -13,7 +13,7 @@
         <div class="__col grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-20">
             @if (!empty($g_content['image']))
             <div data-gsap-element="img" class="__img h-full order1 relative">
-                <img class="" src="{{ $g_content['image']['url'] }}" alt="{{ $g_content['image']['alt'] ?? '' }}">
+                <img data-gsap-element="img" class="" src="{{ $g_content['image']['url'] }}" alt="{{ $g_content['image']['alt'] ?? '' }}">
                 
                 @php
                   // 1. Sprawdzamy czy w ustawieniach bloku wybrano białe tło sekcji
@@ -41,7 +41,7 @@
             @endif
 
             <div class="__content order2">
-                <h2 data-gsap-element="header" class="text-h4 custom_header">{{ $g_content['header'] }}</h2>
+                <h2 data-gsap-element="header" class="text-h3 custom_header">{{ $g_content['header'] }}</h2>
 
                 <div data-gsap-element="txt" class="__txt mt-4">
                     {!! $g_content['text'] !!}

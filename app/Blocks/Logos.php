@@ -29,6 +29,7 @@ class Logos extends Block
 
 		$logos
 			->setLocation('block', '==', 'acf/logos') // ważne!
+			
 			->addText('block-title', [
 				'label' => 'Tytuł',
 				'required' => 0,
@@ -41,7 +42,18 @@ class Logos extends Block
 			/*--- GROUP ---*/
 			->addTab('Elementy', ['placement' => 'top'])
 			->addGroup('g_logos', ['label' => ''])
+			  ->addImage('image', [
+                'label' => 'Obraz',
+                'return_format' => 'array',
+                'preview_size' => 'thumbnail',
+            ])
 			->addText('header', ['label' => 'Tytuł'])
+			     ->addWysiwyg('txt', [
+                'label' => 'Treść',
+                'tabs' => 'all',
+                'toolbar' => 'full',
+                'media_upload' => true,
+            ])
 			->addGallery('gallery', [
 				'label' => 'Logotypy',
 				'preview_size' => 'thumbnail',

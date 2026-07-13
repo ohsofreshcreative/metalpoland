@@ -12,7 +12,6 @@ $sectionClass .= ' ' . $background;
 @endphp
 
 <!--- carousel --->
-
 <section
 	data-gsap-anim="section"
 	@if(!empty($section_id)) id="{{ $section_id }}" @endif
@@ -22,7 +21,6 @@ $sectionClass .= ' ' . $background;
 		@if(!empty($g_carousel['title']))
 		<h2 class="header">{{ $g_carousel['title'] }}</h2>
 		@endif
-
 		@if(!empty($g_carousel['text']))
 		<div class="">
 			{!! $g_carousel['text'] !!}
@@ -30,11 +28,15 @@ $sectionClass .= ' ' . $background;
 		@endif
 	</div>
 	@endif
-
 	<div class="swiper carousel !overflow-visible relative z-20 mt-16">
 		<div class="swiper-wrapper">
 			@foreach($materials as $material)
-			<div class="swiper-slide">
+			<div data-gsap-element="box" class="swiper-slide">
+				@php
+				$material_color = get_field('material_color', $material->ID) ?: '#c86a24';
+				$material_icon = get_field('material_icon', $material->ID);
+				$material_icon_url = $material_icon ? wp_get_attachment_image_url($material_icon, 'full') : '';
+				@endphp
 				<article class="overflow-visible rounded-[10px] grid md:grid-cols-[50%_1fr] gap-10 min-h-[420px]">
 					<div class="__img  relative min-h-[260px] md:min-h-full">
 						<img src="/wp-content/uploads/2026/06/blue-corner-t.svg" class="absolute top-3 right-3 z-20" alt="">
@@ -55,16 +57,24 @@ $sectionClass .= ' ' . $background;
 					</div>
 
 					<div class="flex flex-col justify-end">
+						@if($material_icon_url)
+						<div
+							class="w-10 h-10 mb-8"
+							style="
+            background: {{ $material_color }};
+            -webkit-mask: url('{{ $material_icon_url }}') center/contain no-repeat;
+            mask: url('{{ $material_icon_url }}') center/contain no-repeat;
+        ">
+						</div>
+						@endif
 						<p class="font-header text-h5 text-dark">
 							{{ get_the_title($material->ID) }}
 						</p>
-
 						@if(!empty(get_the_excerpt($material->ID)))
-						<div class="text-lg mt-4">
+						<div class="text-lg mt-6">
 							{{ get_the_excerpt($material->ID) }}
 						</div>
 						@endif
-
 						<div class="mt-6">
 							<a
 								href="{{ get_permalink($material->ID) }}"
@@ -77,7 +87,6 @@ $sectionClass .= ' ' . $background;
 			</div>
 			@endforeach
 		</div>
-
 		<div class="pointer-events-none absolute top-1/2 left-[calc((100vw-100%)/-2)] z-10 flex w-screen -translate-y-1/2 items-center justify-between">
 			<button
 				type="button"
@@ -102,10 +111,8 @@ $sectionClass .= ' ' . $background;
 				</svg>
 			</button>
 		</div>
-
 		<div class="swiper-pagination mt-6"></div>
 	</div>
-
 	<img
 		class="absolute left-1/2 top-1/2 h-[110%] -translate-x-1/2 -translate-y-1/2 opacity-10 hue-rotate-220"
 		src="/wp-content/uploads/2026/02/logo-bg.svg"

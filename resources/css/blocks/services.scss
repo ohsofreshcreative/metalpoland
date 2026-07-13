@@ -1,25 +1,34 @@
-.b-services{
-	._txt{
-		p{
+.b-services {
+	._txt {
+		p {
 			color: #fff !important;
 		}
 	}
-	._s-links{
-				position: relative;
-				display: flex;
-				gap: 12px;
-				align-items: center;
+	._s-links {
+		position: relative;
+		display: flex;
+		gap: 12px;
+		align-items: center;
+
 		&::before {
-					content: "";
-					background-image: url('@images/bullet.svg');
-					position: relative;
-					left: 0;
-					top: 0px;
-					width: 16px;
-					height: 16px;
-					background-size: contain;
-					background-repeat: no-repeat;
-					background-position: center;
-				}
+			content: "";
+			background-image: url('@images/bullet.svg');
+			position: relative;
+			left: 0;
+			top: 0px;
+			width: 16px;
+			height: 16px;
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+	}
+	.header {
+		&::before {
+			margin-top: 0.60em;
+			@media (max-width: 768px) {
+				margin-top: 0.25em;
+			}
+		}
 	}
 }

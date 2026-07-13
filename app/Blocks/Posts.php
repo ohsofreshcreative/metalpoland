@@ -16,7 +16,7 @@ class Posts extends Block
 	public $mode = 'edit';
 	public $supports = [
 		'align' => false,
-		'mode' => true,
+		'mode' => false,
 		'jsx' => true,
 	];
 

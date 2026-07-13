@@ -12,7 +12,6 @@ $sectionClass .= $nomt ? ' !mt-0' : '';
 <div class="_wrapper c-main">
 		<div class="_content">
 		<div class="flex items-center gap-6 mb-6">
-		
 			<h3 data-gsap-element="header" class="custom_header">{{ $g_intro['title'] }}</h3>
 			</div>
 			<div data-gsap-element="text" class="">
@@ -20,6 +19,5 @@ $sectionClass .= $nomt ? ' !mt-0' : '';
 			</div>
 		</div>
 	</div>
-
 </section>
 

@@ -21,7 +21,6 @@
 	/* #04062D */
 
 	/* PRIMARY (niebieski) */
-	/* PRIMARY (granatowy z załącznika) */
 	--p-50: 169 193 225;
 	/* #A9C1E1 */
 	--p-100: 126 159 204;
@@ -44,7 +43,8 @@
 	/* #000C1C */
 	--p-dark: 0 7 17;
 	/* #000711 */
-
+	--brand: 33 133 199;
+	/* #2185C7 */
 
 
 	/* SECONDARY (jasny niebieski z załącznika) */
@@ -64,7 +64,7 @@
 	--s-400: 42 149 220;
 	/* #2A95DC */
 	--s-500: 33 133 199;
-	/* #2185C7 */
+	/* #005C99 */
 	--s-600: 12 105 167;
 	/* #0C69A7 */
 	--s-700: 0 91 152;
@@ -79,10 +79,12 @@
 	/* neutrals / fixed backgrounds */
 	--gray: #2a3f50;
 	--bg: #EEF8FF;
-	--dark: 0 30 72;
-	--darker: 0 23 55;
+	--dark: 0 36 86;
+	/* #002456 */
 	--darken: 0 30 72;
 	/* #001E48 */
+	--darker: 0 23 55;
+	/* #001737 */
 	--lighter: #AAD8F7;
 
 }
@@ -105,6 +107,7 @@
 	--color-primary-800: rgb(var(--p-800));
 	--color-primary-900: rgb(var(--p-900));
 	--color-primary-dark: rgb(var(--p-dark));
+	--color-brand: rgb(var(--brand));
 
 	/* secondary */
 	--color-secondary: rgb(var(--secondary));
@@ -137,7 +140,7 @@
 	--color-dark: rgb(var(--dark));
 	--color-darker: rgb(var(--darker));
 	--color-black: rgb(var(--black));
-	--color-darken: rgba(var(--darken));
+	--color-darken: rgb(var(--darken));
 	--color-bg: var(--bg);
 	--color-lighter: var(--lighter);
 
@@ -145,7 +148,7 @@
 	--gradient: linear-gradient(90deg, #132A23 0%, #0D3F2F 100%);
 	--gradient-light: linear-gradient(-90deg, #0E3A2D 0%, #0A533D 100%);
 	--gradient-s: linear-gradient(-90deg, #DE855D 0%, #D37A51 100%);
-	--gradient-darker: linear-gradient(0deg,rgba(0, 0, 0, 0.6) 0%,rgba(0, 0, 0, 0.6) 100%);
+	--gradient-darker: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%);
 
 }
 
@@ -166,16 +169,27 @@
 @import '../css/blocks/table.scss';
 @import '../css/blocks/services.scss';
 @import '../css/blocks/cta.scss';
+@import '../css/blocks/benefits.scss';
+@import '../css/blocks/markets.scss';
+@import '../css/blocks/posts.scss';
+@import '../css/blocks/steps.scss';
+@import '../css/blocks/advantages.scss';
+@import '../css/blocks/certificates.scss';
+@import '../css/blocks/cards.scss';
+@import '../css/blocks/content.scss';
+@import '../css/blocks/banner.scss';
+@import '../css/blocks/logos.scss';
+@import '../css/blocks/info.scss';
+@import '../css/blocks/contact.scss';
+@import '../css/blocks/map.scss';
+@import '../css/blocks/callout.scss';
+@import '../css/blocks/expertise.scss';
+
 /*-- NOT USED ---*/
 @import '../css/blocks/accordion.scss';
-@import '../css/blocks/cards.scss';
 @import '../css/blocks/category-posts.scss';
-@import '../css/blocks/contact.scss';
-@import '../css/blocks/content.scss';
 @import '../css/blocks/faq.scss';
-@import '../css/blocks/banner.scss';
 @import '../css/blocks/image.scss';
-@import '../css/blocks/logos.scss';
 @import '../css/blocks/numbers.scss';
 @import '../css/blocks/overlap.scss';
 @import '../css/blocks/proces.scss';

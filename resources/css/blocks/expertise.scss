@@ -1,0 +1,56 @@
+.b-expertise {
+	.__txt {
+		line-height: 1.5 !important;
+
+		p {
+			margin-bottom: 16px;
+			line-height: 1.5 !important;
+		}
+
+		strong {
+			font-weight: 700;
+		}
+
+		p:last-child {
+			margin-bottom: 0 !important;
+		}
+
+		ul {
+			margin-top: 8px;
+			margin-bottom: 20px;
+			list-style: none;
+			padding-left: 0;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			li {
+				position: relative;
+				margin-bottom: 0.2em;
+				display: flex;
+				gap: 8px;
+				align-items: center;
+				line-height: 1.5 !important;
+
+				&::before {
+					content: "";
+					background-image: url('@images/bullet.svg');
+					position: relative;
+					left: 0;
+					top: 0px;
+					width: 14px;
+					height: 14px;
+					flex: 0 0 14px;
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-position: center;
+
+					@media (max-width: 420px) {
+						top: -10px;
+					}
+				}
+			}
+		}
+	}
+}
