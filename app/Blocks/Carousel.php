@@ -108,6 +108,7 @@ class Carousel extends Block
                     'none' => 'Brak (domyślne)',
                     'section-white' => 'Białe',
                     'section-light' => 'Jasne',
+					'section-custom-blue' => 'Niebieskie',
                     'section-gray' => 'Szare',
                     'section-brand' => 'Marki',
                     'section-gradient' => 'Gradient',

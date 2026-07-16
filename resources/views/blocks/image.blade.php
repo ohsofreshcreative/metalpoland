@@ -17,7 +17,7 @@ $imageClass = ($hasImage1 && $hasImage2) ? 'img-l' : 'img-xl';
 	$background => filled($background) && $background !== 'none',
 	])>
 
-	<div class="__wrapper c-main grid {{ $gridClass }} items-center">
+	<div class="__wrapper grid {{ $gridClass }} items-center">
 
 		@if ($hasImage1)
 		<img data-gsap-element="image" class="object-cover w-full __img {{ $imageClass }} order1" src="{{ $g_image['image']['url'] }}" alt="{{ $g_image['image']['alt'] ?? '' }}">

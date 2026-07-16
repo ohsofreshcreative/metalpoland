@@ -21,8 +21,8 @@
 			</div>
 			<div class="w-full z-10 relative flex flex-col gap-6">
 				@if(!empty($g_advantages['image']['url']))
-				<div class="w-full relative">
-					<img class="object-cover w-full h-auto" src="{{ $g_advantages['image']['url'] }}" alt="{{ $g_advantages['image']['alt'] ?? '' }}" loading="lazy" decoding="async">
+				<div class="w-full relative max-h-110">
+					<img class="object-cover object-top w-full h-auto max-h-110" src="{{ $g_advantages['image']['url'] }}" alt="{{ $g_advantages['image']['alt'] ?? '' }}" loading="lazy" decoding="async">
 					<img class="absolute top-0 left-0 md:w-20 w-14 rotate-90" src="/wp-content/uploads/2026/06/bottom-left-shape.svg" />
 					<img class="absolute bottom-0 right-0 -rotate-90  md:w-20 w-14" src="/wp-content/uploads/2026/06/bottom-left-shape.svg" />
 				</div>

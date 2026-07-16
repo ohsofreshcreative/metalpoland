@@ -54,3 +54,34 @@
 		}
 	}
 }
+@media (min-width: 1024px) {
+  .expertise-nav-slider .swiper-wrapper {
+    display: flex !important;
+    transform: none !important;
+    width: 100% !important;
+    gap: 16px; 
+  }
+
+  .expertise-nav-slider .swiper-slide {
+    width: 0 !important;
+    flex: 1 1 0% !important; 
+  }
+
+  .expertise-nav-slider .swiper-slide a,
+  .expertise-nav-slider .swiper-slide button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 1023px) {
+
+  .expertise-nav-slider .swiper-slide {
+    width: auto !important;
+  }
+}

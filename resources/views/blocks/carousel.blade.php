@@ -15,11 +15,14 @@ $sectionClass .= ' ' . $background;
 <section
 	data-gsap-anim="section"
 	@if(!empty($section_id)) id="{{ $section_id }}" @endif
-	class="b-carousel  c-main relative -smt {{ $sectionClass }} {{ $section_class }}">
+	class="b-carousel  relative -smt {{ $sectionClass }} {{ $section_class }}">
 	@if(!empty($g_carousel['title']) || !empty($g_carousel['text']))
-	<div class="__wrapper grid grid-cols-1 md:grid-cols-2 gap-10">
+		<img
+		class="absolute top-0 left-0 w-18 md:w-26 lg:w-40 z-10 pointer-events-none rotate-90"
+		src="/wp-content/uploads/2026/06/bottom-left-shape.svg" />
+	<div class="__wrapper c-main  grid grid-cols-1 md:grid-cols-2 gap-10 md:pb-20 pb-10">
 		@if(!empty($g_carousel['title']))
-		<h2 class="header">{{ $g_carousel['title'] }}</h2>
+		<h2 class="header z-10">{{ $g_carousel['title'] }}</h2>
 		@endif
 		@if(!empty($g_carousel['text']))
 		<div class="">
@@ -28,7 +31,7 @@ $sectionClass .= ' ' . $background;
 		@endif
 	</div>
 	@endif
-	<div class="swiper carousel !overflow-visible relative z-20 mt-16">
+	<div class="swiper carousel !overflow-visible relative z-20 mt-16 c-main">
 		<div class="swiper-wrapper">
 			@foreach($materials as $material)
 			<div data-gsap-element="box" class="swiper-slide">

@@ -1,0 +1,1 @@
+import{t as e}from"./swiper-DjMJsVvG.js";(()=>{let t=document.querySelector(`.expertise-nav-slider`);!t||window.innerWidth>=1024||new e(t,{slidesPerView:`auto`,spaceBetween:16,freeMode:!0})})();
